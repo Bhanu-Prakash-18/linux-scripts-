@@ -1,11 +1,18 @@
 #!/bin/bash
-# permissions-test.sh - Verify folder permissions
+# permissions-test.sh - Test file/folder permissions
 
-folder="/shared"
+# Create a test folder
+mkdir -p ~/test-folder
+echo "This is a test file" > ~/test-folder/test-file.txt
 
-echo "Checking permissions for $folder:"
-ls -ld $folder
+# Set permissions
+chmod 744 ~/test-folder/test-file.txt
+chmod 755 ~/test-folder
 
-echo "Listing ACLs:"
-getfacl $folder
+# Display permissions
+echo "Folder permissions:"
+ls -ld ~/test-folder
+
+echo "File permissions:"
+ls -l ~/test-folder/test-file.txt
 
